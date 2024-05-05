@@ -1,0 +1,519 @@
+*
+{
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 
+{
+  font-family: "Nunito", sans-serif;
+}
+
+/********************************************* LOGIN & SIGN UP PAGE *****************************************/
+
+.L-info
+{
+  transition: all 0.5s;
+  box-shadow: 0px 2px 20px rgba(1, 35, 110, 0.3);
+  background-color: white;
+  height: 100vh;
+
+}
+
+.weather-head
+{
+  color: #18184e;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+}
+
+.input-wrap
+{
+  font-size: 18px;
+  color: #424242;
+  line-height: 2; 
+}
+
+input
+{
+  border: none;
+  font-weight: 600;
+  border-bottom: 2px solid rgb(12, 11, 11);
+  width: 100%;
+}
+
+.icon-user, .icon-pass, .icon-mail,
+.icon-number
+{
+  position: absolute;
+  right: 5px;
+}
+
+.icon-pass, .S-pass, .icon-mail,
+.icon-number, .icon-user
+{
+  right: 45px;
+}
+
+.F-pass, .register, .log-weather
+{
+  font-weight: 600; 
+}
+
+.log-weather
+{
+  font-size: 18px;
+}
+
+#loginbutton, #signupbutton, #submit_button,
+#download_button, #refresh_button, #back
+{
+    background-color: #14434a;
+    color: white;
+    padding: 11px 56px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#submit_button
+{
+  padding: 9px 60px;
+}
+
+
+@media (width<1050px)
+{
+  #submit_button
+  {
+    margin-top: 20px;
+    
+  }
+
+  .test-button
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.dash-info img
+{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+
+/****************************************************** Header ****************************************************/
+
+.toggle-sidebar
+{
+  font-family: "Open Sans", sans-serif;
+  background: #f6f9ff;
+  color: #012970;
+  font-size: 0.9rem;
+}
+
+.logo 
+  {
+    line-height: 1;
+  }
+  
+@media (min-width: 1200px) 
+  {
+    .logo 
+    {
+      width: 280px;
+    }
+  }
+  
+.logo img, .logo .report-icon
+  {
+    margin-right: 6px;
+  }
+
+  .logo span, .header .toggle-sidebar-btn,
+  .date, .signout
+  {
+    color: #012970;
+  }
+  
+.logo span 
+  {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+  }
+  
+.header 
+  {
+    transition: all 0.5s;
+    z-index: 997;
+    height: 60px;
+    box-shadow: 0px 2px 20px rgba(1, 35, 110, 0.3);
+    background-color: #fff;
+    padding-left: 20px;
+  }
+  
+.header .toggle-sidebar-btn 
+  {
+    font-size: 32px;
+    padding-left: 10px;
+    cursor: pointer;    
+  }
+
+.date_time_show
+  {
+    text-align: right;
+    width: 100%;
+    font-size: 0.9em;
+  }
+.signout
+  {
+    padding:1rem;
+    font-size: 1.5rem;
+  }
+
+  .header .sidebar-icon, .header .sidebar-icon:hover
+  {
+    border: none;
+    background: transparent;
+  }
+
+
+  /************************************ Sidebar *********************************************/
+
+  .Sidebar
+  {
+    top: 60px;
+    position: fixed;
+    padding: 20px;
+    width: 0;
+    overflow: hidden;
+    max-width: 350px;
+    min-width: 350px;
+    transition: all 0.3s ease-in-out;       
+    height: 100vh;
+    background: #fff;
+    box-shadow: 0px 0px 20px #0129701a;
+  }
+
+  .Sidebar-nav, .Sidebar-nav li  
+  {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .Sidebar-nav .nav-link
+  {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #012970;
+    background: #899bbd;
+    transition: 0.35;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+
+  #nav-item-dash .nav-link
+  {
+    color: #fff;
+    background: #012970;
+  }
+  #nav-item-dash .nav-link i
+  {
+    color: #fff;
+  }
+  
+  .Sidebar-nav .nav-link i 
+  {
+    font-size: 1rem;
+    margin-right: 30px;
+    color: #012970;
+  }
+
+  .Sidebar-nav .nav-link.collapsed 
+  {
+    color: #012970;
+    background: #fff;
+  }
+
+  
+  .Sidebar-nav .nav-link:hover, .Sidebar-nav .nav-link:hover i
+  {
+    color: #020e7e;
+    background: #f6f9ff;
+  }
+  
+  #nav-item-dash .nav-link:hover i
+  {
+    background: #020e7e;
+  }
+
+  /* Add this CSS to your stylesheet */
+@media (max-width: 1024px) 
+{
+  #Sidebar 
+  {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1000;
+      background-color: #fff;
+      /* transform: translateX(-100%); */
+      transition: transform 0.3s ease;
+  }
+
+  #Sidebar.collapsed 
+  {
+      transform: translateX(0);
+  }
+
+  .main, .footer
+  {
+      transition: transform 0.3s ease;
+  }
+
+  .toggle-sidebar #main ,  .toggle-sidebar #footer
+  {
+      transform: translateX(0);
+  }
+}
+
+
+/********************************* Sidebar collapse *****************************/
+
+#Sidebar.collapsed
+{
+  margin-left: -350px;
+}
+
+  /******************************************** Main dashboard ****************************************/
+
+  /********************************** Page title *******************************/
+
+  #main
+  {
+    margin-top: 80px;
+    padding: 20px 0px 0px 350px ;
+    transition: 0.3s ease-in-out;
+  }
+
+  @media (max-width: 1199px) 
+  {
+    #main 
+    {
+      padding: 20px;
+    }
+  }
+  
+
+  .page-title h1 
+  {
+    font-size: 24px;
+    margin-bottom: 0;
+    font-weight: 800;
+    color: #031e4e;
+  }
+
+  .full-screen
+
+  {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    transition:  0.3s ease-in-out;
+  }
+
+
+  /***************************************** Home *************************************/
+
+  .r_time
+  {
+    margin-left: 300px;
+  }
+
+  .strong, .col-form-label
+
+  {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:#012970;
+  }
+
+  /************************************* Card ************************************/
+  .home .info-card
+  {
+    height: 202px;
+  }
+
+  @media (max-width: 425px) 
+  {
+      .home .info-card
+      {
+        height: 202px;
+        width:28rem;
+      }
+      .map-loc
+      {
+        height: 450px;
+        width: 350px;
+      }
+
+      #main
+      {
+        padding: 0px;
+      }
+  }
+
+  .chart-home .chart-card
+  {
+    height: 249px;
+  }
+
+  .home .info-card h1, .card-title
+  {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #012970;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home .info-card h1
+  {
+    font-size: 28px;
+  }
+
+  .home .card-icon 
+  {
+    font-size: 32px;
+    line-height: 0;
+    flex-shrink: 0;
+    flex-grow: 0;  
+  }
+
+  .map-loc
+  {
+    height: 450px;
+    width: 500px;
+  }
+
+  .card-body , .map-body
+  {
+    padding: 0 20px 20px 20px;
+  }
+  
+  .map-icon img
+  {
+    width: 400px;
+  }
+  
+
+  #temperature_reading, #humidity_reading,
+  #wind_reading, #rain_reading, #value
+  {
+    font-size: 4rem;
+    font-family: "Nunito", sans-serif;
+  }
+
+  #value
+  {
+    font-size: 2.7rem;
+    font-family: "Nunito", sans-serif;
+    font-weight: 0;
+  }
+
+  #rain_value
+  {
+    font-size: 2rem;
+    font-family: "Nunito", sans-serif;
+    font-weight: 0;
+  }
+
+  #time_stamp, #device_id
+  {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: "Nunito", sans-serif;
+  }
+
+/************************* Footer ***********************/
+
+
+
+  .footer .copyright 
+  {
+    padding: 20px 0px;
+    font-size: 14px;
+    transition: all 0.3s;
+    border-top: 1px solid #cddfff;
+    background-color:#012970;
+  }
+
+  
+  .footer .copyright  span
+  {
+    text-align: center;
+    color: #fff;
+  }
+
+ 
+   
+
+ /**************************** Report page *****************************/
+
+ #report_heading, #chart_heading
+ {
+   font-size: 1.6rem;
+   font-weight: 700;
+   color: #012970;
+   margin: 0;
+   padding: 0;
+ }
+ #download_button i, #refresh_button i,
+ #back i
+ {
+    font-size: 1.5rem;
+    margin-right: 30px;
+ }
+
+ .report-icon, .chart-icon
+ {
+  color: black;
+ }
+
+ .report_message, .chart_page
+  {
+    transition: all 0.5s;
+    z-index: 997;
+    height: 60px;
+    box-shadow: 0px 10px 5px #0129701a;
+    background-color: transparent;
+    padding-left: 20px;
+  }
+  
+  table thead tr th
+  {
+    font-size: 1.3rem;
+  }
+
+  
+

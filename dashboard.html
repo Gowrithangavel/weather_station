@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Weather Station</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.css">
+    </head>
+    <body class="toggle-sidebar"  onload="update_date()"> 
+
+        <!----------------------- Header -------------------->
+
+        <header id="header" class="header fixed-top">
+            <div class="d-flex">
+                <a href="dashboard.html" class="logo d-flex align-items-center">
+                  <img src="assets/images/logo.png" alt="">
+                  <span class="d-none d-lg-block">Smart Weather Station</span>
+                </a>
+                <button class="sidebar-icon" type="button">
+                    <i class="bi bi-list toggle-sidebar-btn"></i>
+                </button>
+                <div class="date_time_show">
+                    <span id="date_time"></span>
+                </div>
+                <div class="signout"><i class="bi bi-box-arrow-right" onclick="signOut()"></i></div>
+              </div>  
+        </header>
+
+        <!------------------------------ Sidebar --------------------------->
+        
+            <aside id="Sidebar" class="Sidebar">
+                <ul class="Sidebar-nav" id="Sidebar-nav">
+                    <li class="nav-item pt-4 text-center" id="nav-item-dash">
+                        <a class="nav-link active" href="dashboard.html"   id="dashboard-link">
+                            <i class="bi bi-columns-gap dash"></i>
+                            <span>DASHBOARD</span>
+                        </a>
+                    </li>
+                    <li class="nav-item pt-4 text-center">
+                        <a class="nav-link" href="chart.html">
+                            <i class="bi bi-graph-up"></i>
+                            <span>CHARTS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item pt-4 text-center">
+                        <a class="nav-link" href="reports.html">
+                            <i class="bi bi-file-earmark-pdf"></i>
+                            <span>REPORTS</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+
+        <!------------------------- Main Dashboard ----------------------------->
+
+            <main class="main mx-5" id="main">
+                <div class="page-title">
+                    <h1>Dashboard</h1>
+                </div>
+
+                <section class="section home">
+                    <div class="row">
+                        <div class="col-lg-12 pt-5">
+                            <span class="strong">Device ID:</span>
+                            <span id="device_id"></span>
+                            <span class="strong r_time">Received Time:</span>
+                            <span id="time_stamp"></span>
+                        </div>
+
+                        <form>
+                            <div class="col-lg-12 pt-5">
+                                <div class="row">
+                                    <label class="col-sm-2 strong my-2">TEST SERVER</label>
+                                    <label class="col-sm-1 col-form-label mx-2">Field</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="test_field">
+                                    </div>
+                                    <label class="col-sm-1 col-form-label mx-2">Data</label>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control" id="test_data">
+                                    </div>
+                                    <div class="col-sm-1 mx-4 test-button">
+                                        <button type="submit" class="submit_button" id="submit_button" onclick="test_server()">Submit</button>
+                                        
+                                    </div>
+                                </div>
+                                <div id="display_response"></div>
+                                <div id="error_message"></div>
+                            </div>
+                        </form>
+
+                        <!----------------------- Divide two columns ---------------------------->
+
+                        <!----------------------------- Left side column ------------------------------->
+
+                        <div class="col-lg-8 pt-5">
+                            <div class="row">
+                                <!--------- Temperature Widget -------------->
+                                <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card info-card temperature-card mb-5" id="temperature-card">
+                                        <div class="card-body">
+                                            <h2 class="card-title">TEMPERATURE</h2>
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-between">
+                                                <img class="me-auto" src="assets/images/temperature.png" alt="">
+                                                <span id="temperature_reading"></span>
+                                                <h1 class="ms-auto" id="value">&#8451</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--------------------------- Humidity Widget ---------------------->
+
+                                <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card info-card humidity-card mb-5" id="humidity-card">
+                                        <div class="card-body">
+                                            <h2 class="card-title">HUMIDITY</h2>
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-between">
+                                                <img class="me-auto" src="assets/images/humidity.png" alt="">
+                                                <span id="humidity_reading"></span>
+                                                <h1 class="ms-auto" id="value">&#37</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!------------------------------------ Wind Widget ---------------------------------->
+                                <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card info-card wind-card mb-5" id="wind-card">
+                                        <div class="card-body">
+                                            <h2 class="card-title">WIND</h2>
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-between">
+                                                <img class="me-auto" src="assets/images/wind.png" alt="">
+                                                <span id="wind_reading"></span>
+                                                <h1 class="ms-auto" id="value">m/s</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!----------------------------------------- Rain Widget ----------------------------------->
+                                <div class="col-xxl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="card info-card rain-card mb-5" id="rain-card">
+                                        <div class="card-body">
+                                            <h2 class="card-title">RAIN</h2>
+                                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-between">
+                                                <img class="me-auto" src="assets/images/rain.png" alt="">
+                                                <span id="rain_reading"></span>
+                                                <h1 class="ms-auto" id="rain_value">ADC <br> value</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-md-4 col-sm-12 pt-5">
+                            <div class="card map-loc">
+                                <div class="map-body pt-4">
+                                    <h5 class="card-title">MAP LOCATION</h5>
+                                    <div class="map-icon d-flex align-items-center justify-content-center pt-4">
+                                        <img src="assets/images/map.png" alt="">
+                                    </div>
+                                    <div class="Reporting pt-4">
+                                        <div id="interval"></div>
+                                        <span><img src="assets/images/location.png" alt=""></span>
+                                        <div class="location_split1">
+                                            <div id="latitude"></div>
+                                            <div id="longitude"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!------------------- Footer -------------------->
+
+        <footer id="footer" class="footer">
+            <div class="copyright d-flex align-items-center justify-content-center">
+                <span>Project Developed by: Gowri Thangavel</span>
+            </div>
+        </footer>
+       
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/script.js"></script>
+    </body>
+    <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> -->
+
